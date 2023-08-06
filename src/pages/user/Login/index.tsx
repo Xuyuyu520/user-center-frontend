@@ -1,14 +1,10 @@
 import {
-  AlipayCircleOutlined,
   LockOutlined,
-  MobileOutlined,
-  TaobaoCircleOutlined,
   UserOutlined,
-  WeiboCircleOutlined,
 } from '@ant-design/icons';
-import {Alert, Button, Divider, message, Space, Tabs} from 'antd';
+import {Alert, Divider, message, Space, Tabs} from 'antd';
 import React, {useState} from 'react';
-import {ProFormCaptcha, ProFormCheckbox, ProFormText, LoginForm} from '@ant-design/pro-form';
+import {ProFormCheckbox, ProFormText, LoginForm} from '@ant-design/pro-form';
 import {history, useModel} from 'umi';
 import {PLANET_LINK, SYSTEM_LOGO} from '@/constants';
 import Footer from '@/components/Footer';
@@ -30,7 +26,7 @@ const LoginMessage: React.FC<{
 );
 
 const Login: React.FC = () => {
-  const [userLoginState, setUserLoginState] = useState<API.LoginResult>({});
+  const [userLoginState] = useState<API.LoginResult>({});
   const [type, setType] = useState<string>('account');
   const {initialState, setInitialState} = useModel('@@initialState');
 
@@ -61,8 +57,6 @@ const Login: React.FC = () => {
         history.push(redirect || '/');
         return;
       }
-
-      setUserLoginState(user);
     } catch (error) {
       const defaultLoginFailureMessage = '登录失败，请重试！';
       message.error(defaultLoginFailureMessage);
