@@ -1,19 +1,19 @@
-import {LockOutlined, UserOutlined,} from '@ant-design/icons';
-import {message, Tabs} from 'antd';
-import React, {useState} from 'react';
-import {history} from 'umi';
-import {PLANET_LINK, SYSTEM_LOGO} from '@/constants';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { message, Tabs } from 'antd';
+import React, { useState } from 'react';
+import { history } from 'umi';
+import { PLANET_LINK, SYSTEM_LOGO } from '@/constants';
 import Footer from '@/components/Footer';
-import {register} from '@/services/ant-design-pro/api';
+import { register } from '@/services/ant-design-pro/api';
 import styles from './index.less';
-import {LoginForm, ProFormText} from '@ant-design/pro-form';
+import { LoginForm, ProFormText } from '@ant-design/pro-form';
 
 const Register: React.FC = () => {
   const [type, setType] = useState<string>('account');
 
   // 表单提交
   const handleSubmit = async (values: API.RegisterParams) => {
-    const {userPassword, checkPassword} = values;
+    const { userPassword, checkPassword } = values;
     // 校验
     if (userPassword !== checkPassword) {
       message.error('两次输入的密码不一致');
@@ -29,7 +29,7 @@ const Register: React.FC = () => {
 
         /** 此方法会跳转到 redirect 参数所在的位置 */
         if (!history) return;
-        const {query} = history.location;
+        const { query } = history.location;
         history.push({
           pathname: '/user/login',
           query,
@@ -48,12 +48,16 @@ const Register: React.FC = () => {
         <LoginForm
           submitter={{
             searchConfig: {
-              submitText: '注册'
-            }
+              submitText: '注册',
+            },
           }}
-          logo={<img alt="logo" src={SYSTEM_LOGO}/>}
-          title="编程导航知识星球"
-          subTitle={<a href={PLANET_LINK} target="_blank" rel="noreferrer">最好的编程学习知识圈子</a>}
+          logo={<img alt="logo" src={SYSTEM_LOGO} />}
+          title="徐徐科技"
+          subTitle={
+            <a href={PLANET_LINK} target="_blank" rel="noreferrer">
+              最好的学习平台
+            </a>
+          }
           initialValues={{
             autoLogin: true,
           }}
@@ -62,7 +66,7 @@ const Register: React.FC = () => {
           }}
         >
           <Tabs activeKey={type} onChange={setType}>
-            <Tabs.TabPane key="account" tab={'账号密码注册'}/>
+            <Tabs.TabPane key="account" tab={'账号密码注册'} />
           </Tabs>
           {type === 'account' && (
             <>
@@ -70,7 +74,7 @@ const Register: React.FC = () => {
                 name="userAccount"
                 fieldProps={{
                   size: 'large',
-                  prefix: <UserOutlined className={styles.prefixIcon}/>,
+                  prefix: <UserOutlined className={styles.prefixIcon} />,
                 }}
                 placeholder="请输入账号"
                 rules={[
@@ -84,7 +88,7 @@ const Register: React.FC = () => {
                 name="userPassword"
                 fieldProps={{
                   size: 'large',
-                  prefix: <LockOutlined className={styles.prefixIcon}/>,
+                  prefix: <LockOutlined className={styles.prefixIcon} />,
                 }}
                 placeholder="请输入密码"
                 rules={[
@@ -103,7 +107,7 @@ const Register: React.FC = () => {
                 name="checkPassword"
                 fieldProps={{
                   size: 'large',
-                  prefix: <LockOutlined className={styles.prefixIcon}/>,
+                  prefix: <LockOutlined className={styles.prefixIcon} />,
                 }}
                 placeholder="请再次输入密码"
                 rules={[
@@ -122,7 +126,7 @@ const Register: React.FC = () => {
                 name="planetCode"
                 fieldProps={{
                   size: 'large',
-                  prefix: <UserOutlined className={styles.prefixIcon}/>,
+                  prefix: <UserOutlined className={styles.prefixIcon} />,
                 }}
                 placeholder="请输入星球编号"
                 rules={[
@@ -136,7 +140,7 @@ const Register: React.FC = () => {
           )}
         </LoginForm>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

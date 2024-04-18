@@ -1,9 +1,9 @@
-import {GithubOutlined} from '@ant-design/icons';
-import {DefaultFooter} from '@ant-design/pro-layout';
-import {PLANET_LINK} from "@/constants";
+import { GithubOutlined } from '@ant-design/icons';
+import { DefaultFooter } from '@ant-design/pro-layout';
+import { PLANET_LINK } from '@/constants';
 
 const Footer: React.FC = () => {
-  const defaultMessage = '鱼皮出品';
+  const defaultMessage = '徐徐科技';
   const currentYear = new Date().getFullYear();
   return (
     <DefaultFooter
@@ -11,23 +11,26 @@ const Footer: React.FC = () => {
       links={[
         {
           key: 'planet',
-          title: '知识星球',
+          title: '徐徐科技',
           href: PLANET_LINK,
           blankTarget: true,
         },
         {
           key: 'codeNav',
-          title: '编程导航',
-          href: 'https://www.code-nav.cn',
+          title: '徐徐科技',
+          href: 'https://github.com/dashboard',
           blankTarget: true,
         },
         {
           key: 'github',
-          title: <><GithubOutlined/> 鱼皮 GitHub</>,
-          href: 'https://github.com/liyupi',
+          title: (
+            <>
+              <GithubOutlined /> 徐徐 itHub
+            </>
+          ),
+          href: 'https://github.com/Chancechance123',
           blankTarget: true,
         },
-
       ]}
     />
   );
